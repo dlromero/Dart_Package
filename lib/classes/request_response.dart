@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'persona.dart';
+
 ReqRes reqResFromJson(String str) => ReqRes.fromJson(json.decode(str));
 
 String reqResToJson(ReqRes data) => json.encode(data.toJson());
@@ -37,37 +39,5 @@ class ReqRes {
         "total": total,
         "total_pages": totalPages,
         "data": List<dynamic>.from(data.map((x) => x.toJson())),
-      };
-}
-
-class Persona {
-  int id;
-  String email;
-  String firstName;
-  String lastName;
-  String avatar;
-
-  Persona({
-    this.id,
-    this.email,
-    this.firstName,
-    this.lastName,
-    this.avatar,
-  });
-
-  factory Persona.fromJson(Map<String, dynamic> json) => Persona(
-        id: json["id"],
-        email: json["email"],
-        firstName: json["first_name"],
-        lastName: json["last_name"],
-        avatar: json["avatar"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "email": email,
-        "first_name": firstName,
-        "last_name": lastName,
-        "avatar": avatar,
       };
 }
